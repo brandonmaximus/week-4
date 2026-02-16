@@ -1,26 +1,63 @@
 /* Add your CSS here */
 
-/* Body with background image and metallic gold/black color scheme */
+/* Body with background image and metallic blue/silver color scheme */
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/rubaitul-azad-3WhPfoOX888-unsplash.jpg');
+  /* Default to left-to-right unless the page language is RTL */
+  direction: ltr;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/intel-logo.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  color: #D4AF37;
+  color: #E5E5E5;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
 }
 
+/* Switch to right-to-left only for RTL languages */
+body:lang(ar),
+body:lang(he),
+body:lang(fa),
+body:lang(ur) {
+  direction: rtl;
+}
+
+/* RTL layout tweaks: text alignment and timeline flow */
+body:lang(ar) .timeline,
+body:lang(he) .timeline,
+body:lang(fa) .timeline,
+body:lang(ur) .timeline {
+  flex-direction: row-reverse;
+}
+
+body:lang(ar) .timeline div,
+body:lang(he) .timeline div,
+body:lang(fa) .timeline div,
+body:lang(ur) .timeline div,
+body:lang(ar) body > p,
+body:lang(he) body > p,
+body:lang(fa) body > p,
+body:lang(ur) body > p {
+  text-align: right;
+}
+
+/* Keep headings high contrast for accessibility */
+h1,
+h2,
+h3 {
+  color: #E5E5E5;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
 /* Compact header with minimal visual weight */
 header {
   background-color: rgba(0, 0, 0, 0.75); /* More transparent */
-  color: #D4AF37;
+  color: #C0C0C0;
   padding: 25px 20px; /* Much smaller padding */
   text-align: center;
   position: relative;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3); /* Thinner border */
+  border-bottom: 1px solid rgba(192, 192, 192, 0.3); /* Thinner border */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -41,7 +78,7 @@ header img {
   width: 100px; /* Smaller logo */
   height: auto;
   margin-bottom: 10px;
-  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+  filter: drop-shadow(0 2px 8px rgba(95, 168, 255, 0.35));
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -49,16 +86,16 @@ header img {
 header:hover img {
   width: 140px;
   margin-bottom: 20px;
-  filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.5));
+  filter: drop-shadow(0 4px 12px rgba(95, 168, 255, 0.6));
 }
 
 /* Compact heading with reflective gold gradient */
 h1 {
-  background: linear-gradient(135deg, #B8860B 0%, #FFD700 25%, #FFED4E 40%, #FFD700 50%, #D4AF37 75%, #B8860B 100%);
+  background: linear-gradient(135deg, #0B2D5C 0%, #1E5AA8 25%, #5FA8FF 40%, #C0C0C0 55%, #5FA8FF 75%, #0B2D5C 100%);
   background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: currentColor;
   font-size: 1.8em; /* Smaller size */
   font-weight: 600;
   margin: 8px 0;
@@ -104,7 +141,7 @@ header:hover p {
   transform: translateY(0);
 }
 
-section {
+.timeline {
   display: flex;
   flex-direction: row;
   overflow-x: scroll; /* Changed from auto to scroll */
@@ -113,7 +150,7 @@ section {
   gap: 30px; /* Gap between cards */
   scroll-behavior: smooth;
   scrollbar-width: thin; /* Thinner scrollbar for Firefox */
-  scrollbar-color: #FFD700 rgba(0, 0, 0, 0.3); /* Gold thumb, transparent track */
+  scrollbar-color: #5FA8FF rgba(0, 0, 0, 0.3); /* Blue thumb, transparent track */
   min-height: 70vh; /* Make section take up more vertical space */
   width: 100%; /* Use full width */
   box-sizing: border-box; /* Include padding in width calculation */
@@ -124,32 +161,32 @@ section {
 }
 
 /* Thicker, more visually appealing scrollbar for webkit browsers */
-section::-webkit-scrollbar {
+.timeline::-webkit-scrollbar {
   height: 10px; /* Thin but visible scrollbar */
   background: rgba(0, 0, 0, 0.2); /* Slightly visible background */
 }
 
-section::-webkit-scrollbar-track {
+.timeline::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.15); /* Subtle track */
   border-radius: 8px;
 }
 
-section::-webkit-scrollbar-thumb {
-  background: linear-gradient(to right, #B8860B, #FFD700, #FFED4E, #FFD700, #B8860B); /* Gold gradient */
+.timeline::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #0B2D5C, #1E5AA8, #5FA8FF, #1E5AA8, #0B2D5C); /* Blue gradient */
   border-radius: 4px;
   border: none;
   box-shadow: none;
   transition: all 0.3s ease-in-out;
 }
 
-section::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to right, #FFD700, #FFED4E, #FFFACD, #FFED4E, #FFD700); /* Brighter on hover */
-  box-shadow: 0 3px 12px rgba(255, 215, 0, 0.7); /* Stronger glow */
+.timeline::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #1E5AA8, #5FA8FF, #C0C0C0, #5FA8FF, #1E5AA8); /* Brighter on hover */
+  box-shadow: 0 3px 12px rgba(95, 168, 255, 0.7); /* Stronger glow */
   transform: scaleY(1.1);
 }
 
 /* Cards with reflective borders and rotating glare effect */
-section div {
+.timeline div {
   min-width: 350px;
   max-width: 350px;
   min-height: 400px; /* Ensure cards have minimum height */
@@ -162,7 +199,7 @@ section div {
   background-repeat: no-repeat;
   background-blend-mode: overlay;
   border: 3px solid transparent;
-  border-image: linear-gradient(135deg, #B8860B 0%, #FFD700 25%, #FFED4E 50%, #FFD700 75%, #B8860B 100%) 1;
+  border-image: linear-gradient(135deg, #0B2D5C 0%, #1E5AA8 25%, #5FA8FF 50%, #C0C0C0 75%, #0B2D5C 100%) 1;
   border-radius: 10px;
   padding: 25px; /* Slightly more padding */
   margin: 0;
@@ -179,14 +216,14 @@ section div {
 }
 
 /* Rotating glare overlay */
-section div::before {
+.timeline div::before {
   content: '';
   position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, transparent 30%, rgba(255, 237, 78, 0.1) 45%, rgba(255, 237, 78, 0.3) 50%, rgba(255, 237, 78, 0.1) 55%, transparent 70%);
+  background: linear-gradient(45deg, transparent 30%, rgba(95, 168, 255, 0.12) 45%, rgba(192, 192, 192, 0.25) 50%, rgba(95, 168, 255, 0.12) 55%, transparent 70%);
   animation: rotatingGlare 4s linear infinite;
   pointer-events: none;
 }
@@ -196,23 +233,23 @@ section div::before {
   100% { transform: rotate(360deg); }
 }
 
-section div:hover {
+.timeline div:hover {
   transform: scale(1.05);
-  border-image: linear-gradient(135deg, #FFD700 0%, #FFED4E 25%, #FFFACD 50%, #FFED4E 75%, #FFD700 100%) 1;
-  box-shadow: 0 12px 36px rgba(255, 215, 0, 0.3); /* Enhanced shadow on hover */
+  border-image: linear-gradient(135deg, #1E5AA8 0%, #5FA8FF 25%, #C0C0C0 50%, #5FA8FF 75%, #1E5AA8 100%) 1;
+  box-shadow: 0 12px 36px rgba(95, 168, 255, 0.35); /* Enhanced shadow on hover */
 }
 
-section div:hover::before {
+.timeline div:hover::before {
   animation-duration: 2s;
 }
 
 /* Reflective gold text on years */
 h2 {
-  background: linear-gradient(90deg, #B8860B 0%, #FFD700 30%, #FFED4E 50%, #FFD700 70%, #B8860B 100%);
+  background: linear-gradient(90deg, #0B2D5C 0%, #1E5AA8 30%, #5FA8FF 50%, #C0C0C0 70%, #0B2D5C 100%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: currentColor;
   font-size: 2em;
   margin: 0 0 10px 0;
   position: relative;
@@ -223,11 +260,11 @@ h2 {
 
 /* Reflective gold on titles */
 h3 {
-  background: linear-gradient(90deg, #B8860B 0%, #D4AF37 40%, #FFD700 50%, #D4AF37 60%, #B8860B 100%);
+  background: linear-gradient(90deg, #0B2D5C 0%, #1E5AA8 40%, #5FA8FF 50%, #C0C0C0 60%, #0B2D5C 100%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: currentColor;
   font-size: 1.5em;
   margin: 10px 0;
   position: relative;
@@ -236,7 +273,7 @@ h3 {
   animation-delay: 1s;
 }
 
-section div p {
+.timeline div p {
   color: #E5E5E5;
   line-height: 1.6;
   font-size: 1em;
@@ -251,25 +288,25 @@ section div p {
 }
 
 /* Show description on hover */
-section div:hover p {
+.timeline div:hover p {
   opacity: 1;
   max-height: 500px; /* Large enough for any description */
 }
 
-section div img {
+.timeline div img {
   width: 100%;
   height: auto;
   border-radius: 5px;
   margin: 15px 0;
   border: 2px solid transparent;
-  border-image: linear-gradient(90deg, #B8860B 0%, #FFD700 50%, #B8860B 100%) 1;
+  border-image: linear-gradient(90deg, #0B2D5C 0%, #5FA8FF 50%, #0B2D5C 100%) 1;
   position: relative;
   z-index: 1;
 }
 
 body > p {
   text-align: center;
-  background: linear-gradient(90deg, #B8860B 0%, #FFD700 25%, #FFED4E 50%, #FFD700 75%, #B8860B 100%);
+  background: linear-gradient(90deg, #0B2D5C 0%, #1E5AA8 25%, #5FA8FF 50%, #C0C0C0 75%, #0B2D5C 100%);
   background-size: 200% auto;
   background-clip: text;
   -webkit-background-clip: text;
@@ -284,6 +321,147 @@ body > p {
   transition: all 0.3s ease; /* Smooth hover transition */
 }
 
+/* Simple styling for the three-column info section */
+.info-grid .info-card {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 2px solid rgba(95, 168, 255, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.info-grid .info-icon {
+  font-size: 2.2em;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 8px rgba(95, 168, 255, 0.5));
+}
+
+.info-grid h3 {
+  margin-top: 10px;
+}
+
+.info-grid .info-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #5FA8FF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.info-grid .info-link:hover {
+  color: #C0C0C0;
+  border-color: #C0C0C0;
+}
+
+.info-grid .info-link:focus-visible {
+  outline: 3px solid #5FA8FF;
+  outline-offset: 3px;
+}
+
+/* Subscription section styling */
+.subscribe-section .subscribe-card {
+  background-color: rgba(0, 0, 0, 0.78);
+  border: 2px solid rgba(95, 168, 255, 0.5);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+.subscribe-section h2 {
+  margin: 0 0 10px 0;
+}
+
+.subscribe-section p {
+  margin: 0 0 20px 0;
+  color: #E5E5E5;
+}
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.subscribe-form p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #D8D8D8;
+}
+
+.subscribe-form label {
+  font-weight: 600;
+}
+
+.subscribe-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid rgba(95, 168, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #E5E5E5;
+}
+
+.subscribe-form input::placeholder {
+  color: #B8B8B8;
+}
+
+.subscribe-form input:focus-visible {
+  outline: 3px solid #5FA8FF;
+  outline-offset: 2px;
+}
+
+.subscribe-form button {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #0B2D5C, #1E5AA8, #5FA8FF);
+  color: #F5F5F5;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.subscribe-form button:hover {
+  filter: brightness(1.1);
+}
+
+.subscribe-form button:focus-visible {
+  outline: 3px solid #C0C0C0;
+  outline-offset: 2px;
+}
+
+/* Simple footer styling */
+.site-footer {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  color: #E5E5E5;
+}
+
+.site-footer p {
+  margin: 0 0 6px 0;
+}
+
+.site-footer small {
+  color: #D8D8D8;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Interactive footer hover effect */
 body > p:hover {
   background-color: rgba(0, 0, 0, 0.95);
@@ -292,7 +470,7 @@ body > p:hover {
 }
 
 @media (max-width: 768px) {
-  section {
+  .timeline {
     flex-direction: column; /* Stack vertically */
     overflow-x: visible;
     overflow-y: auto;
@@ -304,7 +482,7 @@ body > p:hover {
     scroll-snap-type: none;
   }
   
-section div {
+.timeline div {
     min-width: 100%;
     max-width: 95vw; /* Use 95% of viewport width for better fit */
     margin: 6px auto; /* Reduce margins */
@@ -342,10 +520,10 @@ section div {
   }
   
   /* Adjust card and image sizing for better fit on mobile */
-  section div {
+  .timeline div {
     min-height: 240px; /* Reduce minimum height */
     padding: 10px; /* Minimal padding */
-    border: 2px solid #B8860B; /* Simpler border for mobile to avoid cutoff */
+    border: 2px solid #1E5AA8; /* Simpler border for mobile to avoid cutoff */
     border-image: none; /* Remove border-image on mobile */
   }
   
@@ -359,12 +537,12 @@ section div {
     margin: 3px 0;
   }
   
-  section div p {
+  .timeline div p {
     font-size: 0.85em; /* Reduce paragraph text */
     line-height: 1.4;
   }
   
-  section div img {
+  .timeline div img {
     margin: 6px 0; /* Further reduce image margins */
     max-height: 120px; /* Further limit image height */
   }
